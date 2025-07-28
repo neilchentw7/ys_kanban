@@ -15,14 +15,16 @@ def generate_html(data):
         <style>
             @page {{
                 size: A4 landscape;
-                margin: 8mm;
+                margin: 5mm;
             }}
             @media print {{
                 html, body {{
-                    width: 297mm;
-                    height: 210mm;
+                    width: 290mm; /* 避免貼邊被裁切 */
+                    height: 200mm;
                     margin: 0;
                     font-size: 11pt;
+                    transform: scale(0.95); /* 縮小避免第二頁 */
+                    transform-origin: top left;
                     overflow: hidden;
                 }}
                 table {{
@@ -37,17 +39,18 @@ def generate_html(data):
             }}
             body {{
                 font-family: "Microsoft JhengHei", Arial, sans-serif;
-                margin: 10px;
+                margin: 5px;
                 font-size: 12pt;
             }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
-                margin-bottom: 10px;
+                margin-bottom: 5px;
+                border: 2px solid black; /* 強化整體邊框 */
             }}
             td, th {{
-                border: 1px solid black;
-                padding: 6px;
+                border: 2px solid black; /* 加粗邊框防止列印掉線 */
+                padding: 4px;
                 vertical-align: middle;
                 font-size: 110%;
             }}
@@ -55,32 +58,32 @@ def generate_html(data):
                 background-color: #f0f0f0;
                 font-weight: bold;
                 text-align: center;
-                font-size: 180%;
+                font-size: 150%;
             }}
             .unit-title {{
                 font-weight: bold;
                 text-align: center;
-                font-size: 180%;
+                font-size: 150%;
             }}
             .cell-content {{
                 font-size: 120%;
                 text-align: left;
             }}
             .double-height {{
-                height: 80px;
+                height: 70px;
             }}
             h1 {{
                 text-align: center;
-                font-size: 18pt;
-                margin-bottom: 10px;
+                font-size: 16pt;
+                margin-bottom: 5px;
             }}
             button {{
-                margin: 10px 0;
-                padding: 8px 16px;
+                margin: 5px 0;
+                padding: 6px 12px;
                 background-color: #007BFF;
                 color: white;
                 border: none;
-                font-size: 1.1rem;
+                font-size: 1rem;
                 border-radius: 4px;
                 cursor: pointer;
             }}
@@ -95,7 +98,7 @@ def generate_html(data):
         <h1 class="no-print">混凝土試體製作紀錄表</h1>
         <button class="no-print" onclick="printPage()">🖨️ 列印本頁</button>
 
-        <!-- 表格一：基本資料 -->
+        <!-- 基本資料 -->
         <table>
             <tr><td class="section-title">工程名稱</td><td colspan="3" class="cell-content">{data['工程名稱']}</td></tr>
             <tr><td class="section-title">業 主</td><td colspan="3" class="cell-content">{data['業主']}</td></tr>
@@ -110,7 +113,7 @@ def generate_html(data):
             <tr><td class="section-title">結構部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
         </table>
 
-        <!-- 表格二：試驗項目 -->
+        <!-- 試驗項目 -->
         <table>
             <tr>
                 <td class="section-title" rowspan="3">試驗項目</td>
@@ -130,7 +133,7 @@ def generate_html(data):
             </tr>
         </table>
 
-        <!-- 表格三：取樣資訊 -->
+        <!-- 取樣資訊 -->
         <table>
             <tr>
                 <td class="section-title">取樣日期</td>
