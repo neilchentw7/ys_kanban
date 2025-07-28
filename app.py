@@ -19,14 +19,14 @@ def generate_html(data):
             }}
             @media print {{
                 html, body {{
-                    width: 295mm;
-                    height: 204mm;
+                    width: 300mm;
+                    height: 214mm;
                     margin: 0;
-                    font-size: 14pt;
+                    font-size: 16pt;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    transform: scale(0.97); 
+                    transform: scale(0.98); 
                     transform-origin: center center;
                     overflow: hidden;
                 }}
