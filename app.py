@@ -27,7 +27,7 @@ def generate_html(data):
                     justify-content: center;
                     align-items: center;
                     transform: scale(0.95); 
-                    transform-origin: center center; /* ✅ 中心縮放 */
+                    transform-origin: center center;
                     overflow: hidden;
                 }}
                 table {{
@@ -134,12 +134,12 @@ def generate_html(data):
                     <td class="section-title" rowspan="3">試驗項目</td>
                     <td class="cell-content">一、坍度</td>
                     <td class="cell-content">公分</td>
-                    <td class="cell-content">設計坍度 {data['設計坍度']} ± {data['容許範圍']} 公分</td>
+                    <td class="cell-content">實測 {data['坍度實測']} 公分 (設計 {data['設計坍度']} ± {data['容許範圍']} 公分)</td>
                 </tr>
                 <tr>
-                    <td class="cell-content">二、氣離子檢測值</td>
+                    <td class="cell-content">二、氯離子檢測值</td>
                     <td class="cell-content">kg/M³</td>
-                    <td class="cell-content">規範值 0.15kg/M³</td>
+                    <td class="cell-content">實測 {data['氣離子']} kg/M³ (規範值 0.15 kg/M³)</td>
                 </tr>
                 <tr>
                     <td class="cell-content">三、圓柱試體製作</td>
@@ -156,7 +156,7 @@ def generate_html(data):
                 </tr>
                 <tr class="double-height">
                     <td class="section-title">取樣人員</td>
-                    <td colspan="3" class="cell-content"></td>
+                    <td colspan="3" class="cell-content">{data['取樣人員']}</td>
                 </tr>
             </table>
         </div>
@@ -164,6 +164,7 @@ def generate_html(data):
     </html>
     """
     return html
+
 
 
 
