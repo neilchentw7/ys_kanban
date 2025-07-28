@@ -20,13 +20,13 @@ def generate_html(data):
             @media print {{
                 html, body {{
                     width: 300mm;
-                    height: 264mm;
+                    height: 324mm;
                     margin: 0;
-                    font-size: 16pt;
+                    font-size: 20pt;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    transform: scale(0.98); 
+                    transform: scale(0.99); 
                     transform-origin: center center;
                     overflow: hidden;
                 }}
