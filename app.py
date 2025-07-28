@@ -18,13 +18,18 @@ def generate_html(data):
                 margin: 10mm;
             }}
             @media print {{
-                body {{
-                    margin: 0;
+                html, body {{
+                    width: 297mm;
+                    height: 210mm;
+                    margin: 5mm;
+                    transform: scale(0.9);
+                    transform-origin: top left;
+                    overflow: hidden;
+                }}
+                table {{
+                    page-break-inside: avoid;
                 }}
                 .no-print {{
-                    display: none;
-                }}
-                button {{
                     display: none;
                 }}
             }}
@@ -143,9 +148,6 @@ def generate_html(data):
     </html>
     """
     return html
-
-
-
 
 # --- Streamlit UI ---
 st.title("混凝土試體填報系統（產出網頁版 HTML）")
