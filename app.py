@@ -20,7 +20,7 @@ def generate_html(data):
             @media print {{
                 html, body {{
                     width: 300mm;
-                    height: 284mm;
+                    height: 264mm;
                     margin: 0;
                     font-size: 20pt;
                     display: flex;
