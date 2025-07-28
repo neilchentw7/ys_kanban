@@ -134,9 +134,11 @@ def generate_html(data):
         <table>
             <tr>
                 <td class="section-title">取樣日期</td>
-                <td class="cell-content">{taiwan_date}</td>
+                <td colspan="3" class="cell-content">{taiwan_date}</td>
+            </tr>
+            <tr class="double-height">
                 <td class="section-title">取樣人員</td>
-                <td class="double-height"></td>
+                <td colspan="3" class="cell-content"></td>
             </tr>
         </table>
     </body>
