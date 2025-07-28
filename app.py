@@ -19,12 +19,15 @@ def generate_html(data):
             }}
             @media print {{
                 html, body {{
-                    width: 290mm; /* 避免貼邊被裁切 */
+                    width: 290mm;
                     height: 200mm;
                     margin: 0;
                     font-size: 11pt;
-                    transform: scale(0.95); /* 縮小避免第二頁 */
-                    transform-origin: top left;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transform: scale(0.95); 
+                    transform-origin: center center; /* ✅ 中心縮放 */
                     overflow: hidden;
                 }}
                 table {{
@@ -41,15 +44,26 @@ def generate_html(data):
                 font-family: "Microsoft JhengHei", Arial, sans-serif;
                 margin: 5px;
                 font-size: 12pt;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }}
+            .container {{
+                width: 95%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
                 margin-bottom: 5px;
-                border: 2px solid black; /* 強化整體邊框 */
+                border: 2px solid black;
             }}
             td, th {{
-                border: 2px solid black; /* 加粗邊框防止列印掉線 */
+                border: 2px solid black;
                 padding: 4px;
                 vertical-align: middle;
                 font-size: 110%;
@@ -95,59 +109,62 @@ def generate_html(data):
         </script>
     </head>
     <body>
-        <h1 class="no-print">混凝土試體製作紀錄表</h1>
-        <button class="no-print" onclick="printPage()">🖨️ 列印本頁</button>
+        <div class="container">
+            <h1 class="no-print">混凝土試體製作紀錄表</h1>
+            <button class="no-print" onclick="printPage()">🖨️ 列印本頁</button>
 
-        <!-- 基本資料 -->
-        <table>
-            <tr><td class="section-title">工程名稱</td><td colspan="3" class="cell-content">{data['工程名稱']}</td></tr>
-            <tr><td class="section-title">業 主</td><td colspan="3" class="cell-content">{data['業主']}</td></tr>
-            <tr><td class="section-title">監造單位</td><td colspan="3" class="cell-content">{data['監造單位']}</td></tr>
-            <tr><td class="section-title">承包廠商</td><td colspan="3" class="cell-content">{data['承包廠商']}</td></tr>
-            <tr>
-                <td class="section-title">設計強度</td>
-                <td class="cell-content">{data['設計強度']}</td>
-                <td class="unit-title">kgf/cm²</td>
-                <td></td>
-            </tr>
-            <tr><td class="section-title">結構部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
-        </table>
+            <!-- 基本資料 -->
+            <table>
+                <tr><td class="section-title">工程名稱</td><td colspan="3" class="cell-content">{data['工程名稱']}</td></tr>
+                <tr><td class="section-title">業 主</td><td colspan="3" class="cell-content">{data['業主']}</td></tr>
+                <tr><td class="section-title">監造單位</td><td colspan="3" class="cell-content">{data['監造單位']}</td></tr>
+                <tr><td class="section-title">承包廠商</td><td colspan="3" class="cell-content">{data['承包廠商']}</td></tr>
+                <tr>
+                    <td class="section-title">設計強度</td>
+                    <td class="cell-content">{data['設計強度']}</td>
+                    <td class="unit-title">kgf/cm²</td>
+                    <td></td>
+                </tr>
+                <tr><td class="section-title">結構部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
+            </table>
 
-        <!-- 試驗項目 -->
-        <table>
-            <tr>
-                <td class="section-title" rowspan="3">試驗項目</td>
-                <td class="cell-content">一、坍度</td>
-                <td class="cell-content">公分</td>
-                <td class="cell-content">設計坍度 {data['設計坍度']} ± {data['容許範圍']} 公分</td>
-            </tr>
-            <tr>
-                <td class="cell-content">二、氣離子檢測值</td>
-                <td class="cell-content">kg/M³</td>
-                <td class="cell-content">規範值 0.15kg/M³</td>
-            </tr>
-            <tr>
-                <td class="cell-content">三、圓柱試體製作</td>
-                <td class="cell-content">Φ=15cm＊H=30cm</td>
-                <td class="cell-content">{data['圓柱個數']} 個</td>
-            </tr>
-        </table>
+            <!-- 試驗項目 -->
+            <table>
+                <tr>
+                    <td class="section-title" rowspan="3">試驗項目</td>
+                    <td class="cell-content">一、坍度</td>
+                    <td class="cell-content">公分</td>
+                    <td class="cell-content">設計坍度 {data['設計坍度']} ± {data['容許範圍']} 公分</td>
+                </tr>
+                <tr>
+                    <td class="cell-content">二、氣離子檢測值</td>
+                    <td class="cell-content">kg/M³</td>
+                    <td class="cell-content">規範值 0.15kg/M³</td>
+                </tr>
+                <tr>
+                    <td class="cell-content">三、圓柱試體製作</td>
+                    <td class="cell-content">Φ=15cm＊H=30cm</td>
+                    <td class="cell-content">{data['圓柱個數']} 個</td>
+                </tr>
+            </table>
 
-        <!-- 取樣資訊 -->
-        <table>
-            <tr>
-                <td class="section-title">取樣日期</td>
-                <td colspan="3" class="cell-content">{taiwan_date}</td>
-            </tr>
-            <tr class="double-height">
-                <td class="section-title">取樣人員</td>
-                <td colspan="3" class="cell-content"></td>
-            </tr>
-        </table>
+            <!-- 取樣資訊 -->
+            <table>
+                <tr>
+                    <td class="section-title">取樣日期</td>
+                    <td colspan="3" class="cell-content">{taiwan_date}</td>
+                </tr>
+                <tr class="double-height">
+                    <td class="section-title">取樣人員</td>
+                    <td colspan="3" class="cell-content"></td>
+                </tr>
+            </table>
+        </div>
     </body>
     </html>
     """
     return html
+
 
 
 # --- Streamlit UI ---
