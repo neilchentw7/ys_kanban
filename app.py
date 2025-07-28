@@ -15,18 +15,20 @@ def generate_html(data):
         <style>
             @page {{
                 size: A4 landscape;
-                margin: 10mm;
+                margin: 8mm;
             }}
             @media print {{
                 html, body {{
                     width: 297mm;
                     height: 210mm;
-                    margin: 5mm;
-                    transform: scale(0.9);
-                    transform-origin: top left;
+                    margin: 0;
+                    font-size: 11pt;
                     overflow: hidden;
                 }}
                 table {{
+                    page-break-inside: avoid;
+                }}
+                tr {{
                     page-break-inside: avoid;
                 }}
                 .no-print {{
@@ -35,40 +37,42 @@ def generate_html(data):
             }}
             body {{
                 font-family: "Microsoft JhengHei", Arial, sans-serif;
-                margin: 20px;
-                font-size: 1.4rem;
-                line-height: 1.4;
-            }}
-            h1 {{
-                text-align: center;
-                font-size: 1.8rem;
-                margin-bottom: 10px;
+                margin: 10px;
+                font-size: 12pt;
             }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
-                border: 1px solid black;
-                margin-bottom: 16px;
+                margin-bottom: 10px;
             }}
             td, th {{
                 border: 1px solid black;
-                padding: 8px;
+                padding: 6px;
                 vertical-align: middle;
+                font-size: 110%;
             }}
             .section-title {{
-                width: 20%;
-                font-weight: bold;
                 background-color: #f0f0f0;
-                font-size: 200%;
+                font-weight: bold;
                 text-align: center;
-                white-space: nowrap;
+                font-size: 180%;
+            }}
+            .unit-title {{
+                font-weight: bold;
+                text-align: center;
+                font-size: 180%;
             }}
             .cell-content {{
-                font-size: 150%;
+                font-size: 120%;
                 text-align: left;
             }}
             .double-height {{
-                height: 100px;
+                height: 80px;
+            }}
+            h1 {{
+                text-align: center;
+                font-size: 18pt;
+                margin-bottom: 10px;
             }}
             button {{
                 margin: 10px 0;
@@ -76,12 +80,9 @@ def generate_html(data):
                 background-color: #007BFF;
                 color: white;
                 border: none;
-                cursor: pointer;
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 border-radius: 4px;
-            }}
-            button:hover {{
-                background-color: #0056b3;
+                cursor: pointer;
             }}
         </style>
         <script>
@@ -94,30 +95,22 @@ def generate_html(data):
         <h1 class="no-print">混凝土試體製作紀錄表</h1>
         <button class="no-print" onclick="printPage()">🖨️ 列印本頁</button>
 
-        <!-- 頂部基本資料 -->
+        <!-- 表格一：基本資料 -->
         <table>
             <tr><td class="section-title">工程名稱</td><td colspan="3" class="cell-content">{data['工程名稱']}</td></tr>
-            <tr><td class="section-title">業　主</td><td colspan="3" class="cell-content">{data['業主']}</td></tr>
+            <tr><td class="section-title">業 主</td><td colspan="3" class="cell-content">{data['業主']}</td></tr>
             <tr><td class="section-title">監造單位</td><td colspan="3" class="cell-content">{data['監造單位']}</td></tr>
             <tr><td class="section-title">承包廠商</td><td colspan="3" class="cell-content">{data['承包廠商']}</td></tr>
             <tr>
                 <td class="section-title">設計強度</td>
                 <td class="cell-content">{data['設計強度']}</td>
-                <td class="section-title">kgf/cm²</td>
+                <td class="unit-title">kgf/cm²</td>
                 <td></td>
             </tr>
             <tr><td class="section-title">結構部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
         </table>
 
-        <!-- 取樣日期 -->
-        <table>
-            <tr>
-                <td class="section-title">取樣日期</td>
-                <td colspan="3" class="cell-content">{taiwan_date}</td>
-            </tr>
-        </table>
-
-        <!-- 試驗項目 -->
+        <!-- 表格二：試驗項目 -->
         <table>
             <tr>
                 <td class="section-title" rowspan="3">試驗項目</td>
@@ -137,17 +130,20 @@ def generate_html(data):
             </tr>
         </table>
 
-        <!-- 取樣人員 -->
+        <!-- 表格三：取樣資訊 -->
         <table>
-            <tr class="double-height">
+            <tr>
+                <td class="section-title">取樣日期</td>
+                <td class="cell-content">{taiwan_date}</td>
                 <td class="section-title">取樣人員</td>
-                <td colspan="3"></td>
+                <td class="double-height"></td>
             </tr>
         </table>
     </body>
     </html>
     """
     return html
+
 
 # --- Streamlit UI ---
 st.title("混凝土試體填報系統（產出網頁版 HTML）")
