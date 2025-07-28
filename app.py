@@ -184,7 +184,8 @@ with st.form("input_form"):
         結構部位 = st.text_input("結構部位")
         氣離子 = st.text_input("氣離子檢測值 (kg/m³)")
         圓柱個數 = st.number_input("圓柱試體製作數量", min_value=1, value=3)
-        容許範圍 = st.number_input("坍度允許誤差 ± (cm)", value=2.0)
+        容許範圍 = st.number_input("坍度允許誤差 ± (cm)", value=2.0, format="%.2f")
+
 
     坍度實測 = st.text_input("實測坍度值 (公分)")
     取樣日期 = st.date_input("取樣日期", value=datetime.date.today())
