@@ -243,8 +243,8 @@ if submitted:
 
     with open(tmp_file.name, "rb") as f:
         st.download_button(
-            label="📄 下載 HTML 網頁檔",
+            label="📄 下載網頁檔自行列印",
             data=f,
-            file_name="試體紀錄表.html",
+            file_name="品管工地用白板.html",
             mime="text/html"
         )
