@@ -15,19 +15,16 @@ def generate_html(data):
         <style>
             @page {{
                 size: A4 landscape;
-                margin: 0;
+                margin: 5mm;
             }}
             @media print {{
                 html, body {{
-                    width: 295mm;
-                    height: 200mm;
+                    width: 100%;
+                    height: 100%;
                     margin: 0;
-                    font-size: 16pt;
-                    display: flex;
-                    justify-content: center;
-                    align-items: flex-start;
-                    transform: scale(0.92);
-                    transform-origin: top center;
+                    font-size: 14pt;     /* ✅ 再縮小 */
+                    display: block;       /* ✅ 移除 flex */
+                    zoom: 90%;            /* ✅ 強制縮放 */
                     overflow: hidden;
                 }}
                 table {{
@@ -42,62 +39,57 @@ def generate_html(data):
             }}
             body {{
                 font-family: "Microsoft JhengHei", Arial, sans-serif;
-                margin: 5px;
+                margin: 0;
                 font-size: 12pt;
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                height: 100vh;
+                display: block;
+                text-align: center;
             }}
             .container {{
-                width: 96%;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
+                width: 100%;
+                margin: 0 auto;
             }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
                 border: 2px solid black;
             }}
             td, th {{
                 border: 2px solid black;
                 padding: 2px;
                 vertical-align: middle;
-                font-size: 110%;
+                font-size: 100%;
             }}
             .section-title {{
                 background-color: #f0f0f0;
                 font-weight: bold;
                 text-align: center;
-                font-size: 140%;
+                font-size: 130%;
             }}
             .unit-title {{
                 font-weight: bold;
                 text-align: center;
-                font-size: 140%;
+                font-size: 130%;
             }}
             .cell-content {{
                 font-size: 110%;
                 text-align: left;
             }}
             .double-height {{
-                height: 60px;
+                height: 55px;
             }}
             h1 {{
                 text-align: center;
-                font-size: 16pt;
-                margin-bottom: 5px;
+                font-size: 15pt;
+                margin: 4px 0;
             }}
             button {{
                 margin: 5px 0;
-                padding: 6px 12px;
+                padding: 5px 10px;
                 background-color: #007BFF;
                 color: white;
                 border: none;
-                font-size: 1rem;
+                font-size: 0.9rem;
                 border-radius: 4px;
                 cursor: pointer;
             }}
