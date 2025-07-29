@@ -53,7 +53,7 @@ def generate_html(data):
                 padding: 2px;
                 vertical-align: middle;
                 font-size: 30pt;
-                text-align: center; /* ✅ 數值置中 */
+                text-align: center;
             }}
             .section-title {{
                 background-color: #f0f0f0;
@@ -68,7 +68,7 @@ def generate_html(data):
             }}
             .cell-content {{
                 font-size: 30pt;
-                text-align: center; /* ✅ 內容置中 */
+                text-align: center;
             }}
             .smaller-text {{
                 font-size: 20pt;
@@ -141,7 +141,7 @@ def generate_html(data):
                 <tr>
                     <td class="item-title">三、圓柱試體製作</td>
                     <td class="cell-content">
-                        <span class="smaller-text">Φ=15cm＊H=30cm</span> {data['圓柱個數']} 個
+                        <span class="smaller-text">Φ=15cm＊H=30cm</span> 數量 {data['圓柱個數']} 個
                     </td>
                 </tr>
             </table>
