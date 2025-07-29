@@ -22,16 +22,10 @@ def generate_html(data):
                     width: 100%;
                     height: 100%;
                     margin: 0;
-                    font-size: 30pt;      /* 內容文字大小 */
+                    font-size: 30pt;
                     display: block;
-                    zoom: 90%;            /* 強制縮放避免分頁 */
+                    zoom: 90%;
                     overflow: hidden;
-                }}
-                table {{
-                    page-break-inside: avoid;
-                }}
-                tr {{
-                    page-break-inside: avoid;
                 }}
                 .no-print {{
                     display: none;
@@ -40,7 +34,7 @@ def generate_html(data):
             body {{
                 font-family: "Microsoft JhengHei", Arial, sans-serif;
                 margin: 0;
-                font-size: 30pt;         /* 內容文字 */
+                font-size: 30pt;
                 display: block;
                 text-align: center;
             }}
@@ -58,13 +52,13 @@ def generate_html(data):
                 border: 2px solid black;
                 padding: 2px;
                 vertical-align: middle;
-                font-size: 30pt;         /* 內容文字 */
+                font-size: 30pt;
             }}
             .section-title {{
                 background-color: #f0f0f0;
                 font-weight: bold;
                 text-align: center;
-                font-size: 32pt;         /* 標題文字 */
+                font-size: 32pt;
             }}
             .unit-title {{
                 font-weight: bold;
@@ -72,8 +66,14 @@ def generate_html(data):
                 font-size: 32pt;
             }}
             .cell-content {{
-                font-size: 30pt;         /* 內容文字 */
+                font-size: 30pt;
                 text-align: left;
+            }}
+            .smaller-text {{
+                font-size: 20pt;
+            }}
+            .item-title {{
+                font-size: 26pt;
             }}
             .double-height {{
                 height: 60px;
@@ -123,19 +123,27 @@ def generate_html(data):
             <!-- 試驗項目 -->
             <table>
                 <tr>
-                    <td class="section-title" rowspan="3">試驗項目</td>
-                    <td class="cell-content">一、坍度</td>
+                    <td class="section-title" rowspan="3">試驗<br>項目</td>
+                    <td class="item-title">一、坍度</td>
                     <td class="cell-content">公分</td>
-                    <td class="cell-content">實測 {data['坍度實測']} 公分 (設計 {data['設計坍度']} ± {data['容許範圍']:.2f} 公分)</td>
+                    <td class="cell-content">
+                        實測 {data['坍度實測']} 公分 
+                        <span class="smaller-text">(設計 {data['設計坍度']} ± {data['容許範圍']:.2f} 公分)</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="cell-content">二、氯離子檢測值</td>
+                    <td class="item-title">二、氯離子檢測值</td>
                     <td class="cell-content">kg/M³</td>
-                    <td class="cell-content">實測 {data['氣離子']} kg/M³ (規範值 0.15 kg/M³)</td>
+                    <td class="cell-content">
+                        實測 {data['氣離子']} kg/M³ 
+                        <span class="smaller-text">(規範值 0.15 kg/M³)</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="cell-content">三、圓柱試體製作</td>
-                    <td class="cell-content">Φ=15cm＊H=30cm</td>
+                    <td class="item-title">三、圓柱試體製作</td>
+                    <td class="cell-content">
+                        <span class="smaller-text">Φ=15cm＊H=30cm</span>
+                    </td>
                     <td class="cell-content">{data['圓柱個數']} 個</td>
                 </tr>
             </table>
@@ -147,7 +155,7 @@ def generate_html(data):
                     <td colspan="3" class="cell-content">{taiwan_date}</td>
                 </tr>
                 <tr class="double-height">
-                    <td class="section-title">取樣人員</td>
+                    <td class="section-title">取樣<br>人員</td>
                     <td colspan="3" class="cell-content">{data['取樣人員']}</td>
                 </tr>
             </table>
