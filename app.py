@@ -66,10 +66,10 @@ def generate_html(data):
                 width: 100%;
                 border-collapse: collapse;
                 margin-bottom: 3px;
-                border: 2px solid black;
+                border: 4px solid black; /* ✅ 外框加粗 */
             }}
             td, th {{
-                border: 2px solid black;
+                border: 2px solid black; /* ✅ 內格線保持原來粗細 */
                 padding: 2px;
                 vertical-align: middle;
                 font-size: 30pt;
