@@ -15,19 +15,19 @@ def generate_html(data):
         <style>
             @page {{
                 size: A4 landscape;
-                margin: 5mm;
+                margin: 0;
             }}
             @media print {{
                 html, body {{
                     width: 295mm;
-                    height: 214mm;
+                    height: 200mm;
                     margin: 0;
-                    font-size: 20pt;
+                    font-size: 16pt;
                     display: flex;
-                    justify-content: center;     /* 水平置中 */
-                    align-items: flex-start;     /* 垂直頂部 */
-                    transform: scale(0.96); 
-                    transform-origin: top center;/* 從上方縮放 */
+                    justify-content: center;
+                    align-items: flex-start;
+                    transform: scale(0.92);
+                    transform-origin: top center;
                     overflow: hidden;
                 }}
                 table {{
@@ -46,11 +46,11 @@ def generate_html(data):
                 font-size: 12pt;
                 display: flex;
                 justify-content: center;
-                align-items: flex-start;   /* 改為頂部對齊 */
+                align-items: flex-start;
                 height: 100vh;
             }}
             .container {{
-                width: 98%;
+                width: 96%;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
@@ -64,7 +64,7 @@ def generate_html(data):
             }}
             td, th {{
                 border: 2px solid black;
-                padding: 4px;
+                padding: 2px;
                 vertical-align: middle;
                 font-size: 110%;
             }}
@@ -72,19 +72,19 @@ def generate_html(data):
                 background-color: #f0f0f0;
                 font-weight: bold;
                 text-align: center;
-                font-size: 150%;
+                font-size: 140%;
             }}
             .unit-title {{
                 font-weight: bold;
                 text-align: center;
-                font-size: 150%;
+                font-size: 140%;
             }}
             .cell-content {{
-                font-size: 120%;
+                font-size: 110%;
                 text-align: left;
             }}
             .double-height {{
-                height: 70px;
+                height: 60px;
             }}
             h1 {{
                 text-align: center;
