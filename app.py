@@ -120,12 +120,11 @@ def generate_html(data):
                 <tr><td class="section-title">結構部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
             </table>
 
-            <!-- 試驗項目 -->
+            <!-- 試驗項目 (移除 公分 和 kg/M³ 欄位) -->
             <table>
                 <tr>
                     <td class="section-title" rowspan="3">試驗<br>項目</td>
                     <td class="item-title">一、坍度</td>
-                    <td class="cell-content">公分</td>
                     <td class="cell-content">
                         實測 {data['坍度實測']} 公分 
                         <span class="smaller-text">(設計 {data['設計坍度']} ± {data['容許範圍']:.2f} 公分)</span>
@@ -133,7 +132,6 @@ def generate_html(data):
                 </tr>
                 <tr>
                     <td class="item-title">二、氯離子檢測值</td>
-                    <td class="cell-content">kg/M³</td>
                     <td class="cell-content">
                         實測 {data['氣離子']} kg/M³ 
                         <span class="smaller-text">(規範值 0.15 kg/M³)</span>
@@ -142,9 +140,8 @@ def generate_html(data):
                 <tr>
                     <td class="item-title">三、圓柱試體製作</td>
                     <td class="cell-content">
-                        <span class="smaller-text">Φ=15cm＊H=30cm</span>
+                        <span class="smaller-text">Φ=15cm＊H=30cm</span> {data['圓柱個數']} 個
                     </td>
-                    <td class="cell-content">{data['圓柱個數']} 個</td>
                 </tr>
             </table>
 
