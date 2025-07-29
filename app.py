@@ -71,7 +71,7 @@ def generate_html(data):
                 text-align: center;
             }}
             .align-right {{
-                text-align: right;       /* ✅ 取樣人員右對齊 */
+                text-align: right;
                 padding-right: 15px;
             }}
             .smaller-text {{
@@ -146,4 +146,79 @@ def generate_html(data):
                     <td class="item-title">三、圓柱試體製作</td>
                     <td class="cell-content">
                         <span class="smaller-text">Φ=15cm＊H=30cm</span> 數量 {data['圓柱個數']} 個
-                    </
+                    </td>
+                </tr>
+            </table>
+
+            <!-- 取樣資訊 -->
+            <table>
+                <tr>
+                    <td class="section-title">取樣日期</td>
+                    <td colspan="3" class="cell-content">{taiwan_date}</td>
+                </tr>
+                <tr class="double-height">
+                    <td class="section-title">取樣<br>人員</td>
+                    <td colspan="3" class="cell-content align-right">{data['取樣人員']}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    </html>
+    """
+    return html
+
+
+# --- Streamlit UI ---
+st.title("品管工地用白板列印")
+
+with st.form("input_form"):
+    col1, col2 = st.columns(2)
+    with col1:
+        工程名稱 = st.text_input("工程名稱")
+        業主 = st.text_input("業主")
+        監造單位 = st.text_input("監造單位")
+        設計強度 = st.text_input("設計強度 (kgf/cm²)")
+        設計坍度 = st.number_input("設計坍度值 (cm)", value=18.0)
+    with col2:
+        承包廠商 = st.text_input("承包廠商")
+        結構部位 = st.text_input("結構部位")
+        氣離子 = st.text_input("氯離子檢測值 (kg/m³)")
+        圓柱個數 = st.number_input("圓柱試體製作數量", min_value=1, value=3)
+        容許範圍 = st.number_input("坍度允許誤差 ± (cm)", value=2.0, format="%.2f")
+
+    坍度實測 = st.text_input("實測坍度值 (公分)")
+    取樣日期 = st.date_input("取樣日期", value=datetime.date.today())
+    取樣人員 = st.text_input("取樣人員")
+
+    submitted = st.form_submit_button("產出 HTML")
+
+if submitted:
+    data = {
+        "工程名稱": 工程名稱,
+        "業主": 業主,
+        "監造單位": 監造單位,
+        "承包廠商": 承包廠商,
+        "設計強度": 設計強度,
+        "結構部位": 結構部位,
+        "取樣日期": 取樣日期,
+        "設計坍度": 設計坍度,
+        "容許範圍": 容許範圍,
+        "坍度實測": 坍度實測,
+        "氣離子": 氣離子,
+        "圓柱個數": 圓柱個數,
+        "取樣人員": 取樣人員
+    }
+
+    html_content = generate_html(data)
+
+    tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".html")
+    tmp_file.write(html_content.encode("utf-8"))
+    tmp_file.close()
+
+    with open(tmp_file.name, "rb") as f:
+        st.download_button(
+            label="📄 下載 HTML 網頁檔",
+            data=f,
+            file_name="試體紀錄表.html",
+            mime="text/html"
+        )
