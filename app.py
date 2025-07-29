@@ -1,8 +1,13 @@
 import streamlit as st
 import datetime
 import tempfile
+import base64
 
 def generate_html(data):
+    # 將 logo.png 轉為 Base64
+    with open("logo.png", "rb") as img_file:
+        logo_base64 = base64.b64encode(img_file.read()).decode()
+
     year = data['取樣日期'].year - 1911
     taiwan_date = f"民國 {year} 年 {data['取樣日期'].month} 月 {data['取樣日期'].day} 日"
 
@@ -124,7 +129,7 @@ def generate_html(data):
         <div class="container">
             <!-- Logo + 公司名稱 -->
             <div class="header">
-                <img src="logo.png" alt="Logo">
+                <img src="data:image/png;base64,{logo_base64}" alt="Logo">
                 <span>禹盛混凝土有限公司</span>
             </div>
 
