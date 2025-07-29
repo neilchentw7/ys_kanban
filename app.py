@@ -22,9 +22,9 @@ def generate_html(data):
                     width: 100%;
                     height: 100%;
                     margin: 0;
-                    font-size: 20pt;      /* 內容文字大小 */
+                    font-size: 30pt;     /* ✅ 內容文字 */
                     display: block;
-                    zoom: 90%;            /* 強制縮放避免分頁 */
+                    zoom: 90%;           /* ✅ 強制縮放避免分頁 */
                     overflow: hidden;
                 }}
                 table {{
@@ -40,7 +40,7 @@ def generate_html(data):
             body {{
                 font-family: "Microsoft JhengHei", Arial, sans-serif;
                 margin: 0;
-                font-size: 20pt;
+                font-size: 30pt;         /* ✅ 內容文字 */
                 display: block;
                 text-align: center;
             }}
@@ -58,29 +58,29 @@ def generate_html(data):
                 border: 2px solid black;
                 padding: 2px;
                 vertical-align: middle;
-                font-size: 20pt;      /* 一般文字 */
+                font-size: 30pt;         /* ✅ 內容文字 */
             }}
             .section-title {{
                 background-color: #f0f0f0;
                 font-weight: bold;
                 text-align: center;
-                font-size: 24pt;      /* 標題文字 */
+                font-size: 36pt;         /* ✅ 標題文字 */
             }}
             .unit-title {{
                 font-weight: bold;
                 text-align: center;
-                font-size: 24pt;
+                font-size: 36pt;
             }}
             .cell-content {{
-                font-size: 20pt;      /* 內容文字 */
+                font-size: 30pt;         /* ✅ 內容文字 */
                 text-align: left;
             }}
             .double-height {{
-                height: 55px;
+                height: 60px;
             }}
             h1 {{
                 text-align: center;
-                font-size: 20pt;
+                font-size: 36pt;
                 margin: 4px 0;
             }}
             button {{
@@ -89,7 +89,7 @@ def generate_html(data):
                 background-color: #007BFF;
                 color: white;
                 border: none;
-                font-size: 0.9rem;
+                font-size: 1rem;
                 border-radius: 4px;
                 cursor: pointer;
             }}
