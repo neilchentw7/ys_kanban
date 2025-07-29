@@ -16,7 +16,7 @@ def generate_html(data):
     <html>
     <head>
         <meta charset="utf-8">
-        <title>混凝土試體製作紀錄表</title>
+        <title>品管工地用白板</title>
         <style>
             @page {{
                 size: A4 landscape;
