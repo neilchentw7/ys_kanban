@@ -22,9 +22,9 @@ def generate_html(data):
                     width: 100%;
                     height: 100%;
                     margin: 0;
-                    font-size: 30pt;     /* ✅ 內容文字 */
+                    font-size: 30pt;      /* 內容文字大小 */
                     display: block;
-                    zoom: 90%;           /* ✅ 強制縮放避免分頁 */
+                    zoom: 90%;            /* 強制縮放避免分頁 */
                     overflow: hidden;
                 }}
                 table {{
@@ -40,7 +40,7 @@ def generate_html(data):
             body {{
                 font-family: "Microsoft JhengHei", Arial, sans-serif;
                 margin: 0;
-                font-size: 30pt;         /* ✅ 內容文字 */
+                font-size: 30pt;         /* 內容文字 */
                 display: block;
                 text-align: center;
             }}
@@ -58,21 +58,21 @@ def generate_html(data):
                 border: 2px solid black;
                 padding: 2px;
                 vertical-align: middle;
-                font-size: 30pt;         /* ✅ 內容文字 */
+                font-size: 30pt;         /* 內容文字 */
             }}
             .section-title {{
                 background-color: #f0f0f0;
                 font-weight: bold;
                 text-align: center;
-                font-size: 36pt;         /* ✅ 標題文字 */
+                font-size: 32pt;         /* 標題文字 */
             }}
             .unit-title {{
                 font-weight: bold;
                 text-align: center;
-                font-size: 36pt;
+                font-size: 32pt;
             }}
             .cell-content {{
-                font-size: 30pt;         /* ✅ 內容文字 */
+                font-size: 30pt;         /* 內容文字 */
                 text-align: left;
             }}
             .double-height {{
@@ -80,7 +80,7 @@ def generate_html(data):
             }}
             h1 {{
                 text-align: center;
-                font-size: 36pt;
+                font-size: 32pt;
                 margin: 4px 0;
             }}
             button {{
