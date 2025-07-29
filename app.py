@@ -117,7 +117,7 @@ def generate_html(data):
                     <td class="unit-title">kgf/cm²</td>
                     <td></td>
                 </tr>
-                <tr><td class="section-title">結構部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
+                <tr><td class="section-title">結構<br>部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
             </table>
 
             <!-- 試驗項目 (移除 公分 和 kg/M³ 欄位) -->
