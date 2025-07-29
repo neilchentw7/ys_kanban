@@ -157,14 +157,14 @@ def generate_html(data):
                     <td class="section-title" rowspan="3">試驗<br>項目</td>
                     <td class="item-title">一、坍度</td>
                     <td class="cell-content">
-                        現場 {data['坍度實測']} 公分 
+                        實測 {data['坍度實測']} 公分 
                         <span class="smaller-text">(設計 {data['設計坍度']} ± {data['容許範圍']:.2f} 公分)</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="item-title">二、氯離子檢測值</td>
                     <td class="cell-content">
-                        現場 {data['氣離子']} kg/M³ 
+                        實測 {data['氣離子']} kg/M³ 
                         <span class="smaller-text">(規範值 0.15 kg/M³)</span>
                     </td>
                 </tr>
@@ -210,4 +210,41 @@ with st.form("input_form"):
         結構部位 = st.text_input("結構部位")
         氣離子 = st.text_input("氯離子檢測值 (kg/m³)")
         圓柱個數 = st.number_input("圓柱試體製作數量", min_value=1, value=3)
-        容許範圍 = st
+        容許範圍 = st.number_input("坍度允許誤差 ± (cm)", value=2.0, format="%.2f")
+
+    坍度實測 = st.text_input("實測坍度值 (公分)")
+    取樣日期 = st.date_input("取樣日期", value=datetime.date.today())
+    取樣人員 = st.text_input("取樣人員")
+
+    submitted = st.form_submit_button("產出網頁檔自行列印")
+
+if submitted:
+    data = {
+        "工程名稱": 工程名稱,
+        "業主": 業主,
+        "監造單位": 監造單位,
+        "承包廠商": 承包廠商,
+        "設計強度": 設計強度,
+        "結構部位": 結構部位,
+        "取樣日期": 取樣日期,
+        "設計坍度": 設計坍度,
+        "容許範圍": 容許範圍,
+        "坍度實測": 坍度實測,
+        "氣離子": 氣離子,
+        "圓柱個數": 圓柱個數,
+        "取樣人員": 取樣人員
+    }
+
+    html_content = generate_html(data)
+
+    tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".html")
+    tmp_file.write(html_content.encode("utf-8"))
+    tmp_file.close()
+
+    with open(tmp_file.name, "rb") as f:
+        st.download_button(
+            label="📄 下載網頁檔自行列印",
+            data=f,
+            file_name="品管工地用白板.html",
+            mime="text/html"
+        )
