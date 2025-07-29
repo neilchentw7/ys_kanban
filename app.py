@@ -4,7 +4,7 @@ import tempfile
 
 def generate_html(data):
     year = data['取樣日期'].year - 1911
-    taiwan_date = f"{year} 年 {data['取樣日期'].month} 月 {data['取樣日期'].day} 日"
+    taiwan_date = f"民國 {year} 年 {data['取樣日期'].month} 月 {data['取樣日期'].day} 日"
 
     html = f"""
     <!DOCTYPE html>
@@ -53,6 +53,7 @@ def generate_html(data):
                 padding: 2px;
                 vertical-align: middle;
                 font-size: 30pt;
+                text-align: center; /* ✅ 數值置中 */
             }}
             .section-title {{
                 background-color: #f0f0f0;
@@ -67,7 +68,7 @@ def generate_html(data):
             }}
             .cell-content {{
                 font-size: 30pt;
-                text-align: left;
+                text-align: center; /* ✅ 內容置中 */
             }}
             .smaller-text {{
                 font-size: 20pt;
@@ -120,7 +121,7 @@ def generate_html(data):
                 <tr><td class="section-title">結構<br>部位</td><td colspan="3" class="cell-content">{data['結構部位']}</td></tr>
             </table>
 
-            <!-- 試驗項目 (移除 公分 和 kg/M³ 欄位) -->
+            <!-- 試驗項目 -->
             <table>
                 <tr>
                     <td class="section-title" rowspan="3">試驗<br>項目</td>
