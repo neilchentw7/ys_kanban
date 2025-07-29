@@ -216,7 +216,7 @@ with st.form("input_form"):
     取樣日期 = st.date_input("取樣日期", value=datetime.date.today())
     取樣人員 = st.text_input("取樣人員")
 
-    submitted = st.form_submit_button("產出 HTML")
+    submitted = st.form_submit_button("產出網頁檔自行列印")
 
 if submitted:
     data = {
