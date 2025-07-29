@@ -42,6 +42,21 @@ def generate_html(data):
                 width: 100%;
                 margin: 0 auto;
             }}
+            .header {{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 10px;
+            }}
+            .header img {{
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+            }}
+            .header span {{
+                font-size: 20pt;
+                font-weight: bold;
+            }}
             table {{
                 width: 100%;
                 border-collapse: collapse;
@@ -107,7 +122,13 @@ def generate_html(data):
     </head>
     <body>
         <div class="container">
-            <h1 class="no-print">混凝土試體製作紀錄表</h1>
+            <!-- Logo + 公司名稱 -->
+            <div class="header">
+                <img src="logo.png" alt="Logo">
+                <span>禹盛混凝土有限公司</span>
+            </div>
+
+            <h1 class="no-print">品管工地用白板列印</h1>
             <button class="no-print" onclick="printPage()">🖨️ 列印本頁</button>
 
             <!-- 基本資料 -->
