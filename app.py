@@ -94,6 +94,10 @@ def generate_html(data):
             .double-height {{
                 height: 60px;
             }}
+            .right-text {{
+                float: right;
+                font-size: 24pt;
+            }}
             button {{
                 margin: 5px 0;
                 padding: 5px 10px;
@@ -119,6 +123,7 @@ def generate_html(data):
             <h1 class="no-print">品管工地用白板列印</h1>
             <button class="no-print" onclick="printPage()">🖨️ 列印本頁</button>
 
+            <!-- 基本資料 -->
             <table>
                 <tr><td class="section-title">工程名稱</td><td colspan="3" class="cell-content">{data['工程名稱']}</td></tr>
                 <tr><td class="section-title">業 主</td><td colspan="3" class="cell-content">{data['業主']}</td></tr>
@@ -133,15 +138,20 @@ def generate_html(data):
                 <tr><td class="section-title">結構<br>部位</td><td colspan="3" class="cell-content">&nbsp;</td></tr>
             </table>
 
+            <!-- 試驗項目 -->
             <table>
                 <tr>
                     <td class="section-title" rowspan="3">試驗<br>項目</td>
                     <td class="item-title">一、坍度</td>
-                    <td class="cell-content">&nbsp;</td>
+                    <td class="cell-content">
+                        <span class="right-text">(設計　　 ± 　　 公分)</span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="item-title">二、氯離子檢測值</td>
-                    <td class="cell-content">&nbsp;</td>
+                    <td class="cell-content">
+                        <span class="right-text">kg/m³</span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="item-title">三、圓柱試體製作</td>
@@ -151,6 +161,7 @@ def generate_html(data):
                 </tr>
             </table>
 
+            <!-- 取樣資訊 -->
             <table>
                 <tr>
                     <td class="section-title">取樣日期</td>
