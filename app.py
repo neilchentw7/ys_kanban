@@ -89,12 +89,12 @@ def generate_html(data):
                 font-size: 20pt;
             }}
             .item-title {{
-                font-size: 32pt; /* 增大 6pt */
-                height: 80px;     /* 兩行高度 */
+                font-size: 32pt;
+                height: 120px;   /* ✅ 3行高度 */
                 line-height: 1.2;
             }}
-            .double-height {{
-                height: 60px;
+            .triple-height {{
+                height: 120px;   /* ✅ 取樣人員 3行高度 */
             }}
             .right-text {{
                 float: right;
@@ -169,7 +169,7 @@ def generate_html(data):
                     <td class="section-title">取樣日期</td>
                     <td colspan="3" class="cell-content">民國　　　年　　　月　　　日</td>
                 </tr>
-                <tr class="double-height">
+                <tr class="triple-height">
                     <td class="section-title">取樣<br>人員</td>
                     <td colspan="3" class="cell-content align-right">&nbsp;</td>
                 </tr>
