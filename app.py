@@ -89,7 +89,9 @@ def generate_html(data):
                 font-size: 20pt;
             }}
             .item-title {{
-                font-size: 26pt;
+                font-size: 32pt; /* 增大 6pt */
+                height: 80px;     /* 兩行高度 */
+                line-height: 1.2;
             }}
             .double-height {{
                 height: 60px;
