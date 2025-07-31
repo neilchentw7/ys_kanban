@@ -90,11 +90,11 @@ def generate_html(data):
             }}
             .item-title {{
                 font-size: 32pt;
-                height: 80px;   /* ✅ 3行高度 */
+                height: 60px;   /* ✅ 3行高度 */
                 line-height: 1.2;
             }}
             .triple-height {{
-                height: 100px;   /* ✅ 取樣人員 3行高度 */
+                height: 80px;   /* ✅ 取樣人員 3行高度 */
             }}
             .right-text {{
                 float: right;
